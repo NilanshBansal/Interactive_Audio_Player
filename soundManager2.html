@@ -113,6 +113,8 @@
     <button class="player__stop button button--large">Stop</button>
  </div>
 
+ <button class="clickme">CLICK ME</button>
+
 
 
  <script>
@@ -139,7 +141,8 @@ var player = {
    btnVolumeUp: document.querySelector('.player__volume-up'),
    timeElapsed: document.querySelector('.player__time-elapsed'),
    timeTotal: document.querySelector('.player__time-total'),
-   volume: document.querySelector('.player__volume-info')
+   volume: document.querySelector('.player__volume-info'),
+   click_btn: document.querySelector('.clickme')
 };
 var audio = null;
 
@@ -253,5 +256,14 @@ player.btnNext.addEventListener('click', function() {
       audio.setPosition(position);
       player.timeElapsed.textContent = formatMilliseconds(audio.position);   
    }
+});
+
+player.click_btn.addEventListener('click',function(){
+  if (audio === null) {
+    return;
+  }
+  audio.setPosition(430);
+  player.timeElapsed.textContent = formatMilliseconds(audio.position);
+
 });
 </script>
