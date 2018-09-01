@@ -114,6 +114,14 @@
  </div>
 
  <button class="clickme">CLICK ME</button>
+ <div>
+  <p id="p1" class="transcript">
+    he was frustrated by the website 
+  </p>
+  <p id ="p2" class="transcript">
+    but you still low less frustrated once we found out that he was saving 
+  </p>
+  </div>
 
 
 
@@ -132,6 +140,8 @@
       (milliseconds < 100 ? '0' : '') + (milliseconds < 10 ? '0' : '') + milliseconds;
 }
 
+let transcript = [0.43,3.69];
+
 var player = {
    btnPlay: document.querySelector('.player__play'),
    btnStop: document.querySelector('.player__stop'),
@@ -142,7 +152,7 @@ var player = {
    timeElapsed: document.querySelector('.player__time-elapsed'),
    timeTotal: document.querySelector('.player__time-total'),
    volume: document.querySelector('.player__volume-info'),
-   click_btn: document.querySelector('.clickme')
+   transcript_elements:document.getElementsByClassName('transcript'),
 };
 var audio = null;
 
@@ -160,6 +170,11 @@ soundManager.setup({
          },
          whileplaying: function() {
             player.timeElapsed.textContent = formatMilliseconds(audio.position);
+            // if(audio.position * 1000 < 2.08){
+            //   console.log("sas");
+            // }
+            //USE THIS TO ADD CLASSES TO THE PARTICULAR P TAGS AND ADD STYLING TO THAT
+            // console.log(((audio.position)/1000));
          },
          onload: function() {
             player.timeTotal.textContent = formatMilliseconds(audio.duration);
@@ -258,12 +273,19 @@ player.btnNext.addEventListener('click', function() {
    }
 });
 
-player.click_btn.addEventListener('click',function(){
-  if (audio === null) {
+Object.keys(player.transcript_elements).forEach(function(key){
+  player.transcript_elements[key].addEventListener('click',function(){
+    if (audio === null) {
     return;
   }
-  audio.setPosition(430);
+  console.log(player.transcript_elements[key]['id']);
+  let stringId = player.transcript_elements[key]['id'];
+  stringId = stringId.substr(1);
+  let id = parseInt(stringId);
+  console.log(id);
+  audio.setPosition((transcript[id-1])*1000);
   player.timeElapsed.textContent = formatMilliseconds(audio.position);
-
+  console.log((transcript[id-1])*1000);
+  });
 });
 </script>
