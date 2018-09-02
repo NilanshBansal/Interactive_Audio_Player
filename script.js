@@ -168,3 +168,9 @@ Object.keys(player.transcript_elements).forEach(function (key) {
     player.timeElapsed.textContent = formatMilliseconds(audio.position);
   });
 });
+
+Object.keys(player.transcript_elements).forEach(function (key) {
+  player.transcript_elements[key].addEventListener('mouseover', function () {
+    player.transcript_elements[key].style.cursor = "pointer";
+  });
+});
