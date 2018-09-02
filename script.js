@@ -25,6 +25,7 @@
     timeTotal: document.querySelector('.player__time-total'),
     volume: document.querySelector('.player__volume-info'),
     transcript_elements: document.getElementsByClassName('transcript'),
+    play_pause_icon:document.getElementById('play_pause_icon')
   };
   var audio = null;
   var colorChangedIndex = null;
@@ -86,10 +87,14 @@
 
     if (audio.playState === 0 || audio.paused === true) {
       audio.play();
-      this.classList.add('is-playing');
+      // this.classList.add('is-playing');
+      player.play_pause_icon.classList.remove('fa-play');
+      player.play_pause_icon.classList.add('fa-pause');
     } else {
       audio.pause();
-      this.classList.remove('is-playing');
+      // this.classList.remove('is-playing');
+      player.play_pause_icon.classList.remove('fa-pause');
+      player.play_pause_icon.classList.add('fa-play');
     }
   });
 
@@ -100,7 +105,8 @@
 
     audio.stop();
     document.querySelector('.player__time-elapsed').textContent = formatMilliseconds(0);
-    player.btnPlay.classList.remove('is-playing');
+    player.play_pause_icon.classList.remove('fa-pause');
+    player.play_pause_icon.classList.add('fa-play');
   });
 
   player.btnVolumeDown.addEventListener('click', function () {

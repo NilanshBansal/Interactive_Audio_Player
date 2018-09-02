@@ -4,31 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
+  
   <title>Interactive Audio Player</title>
 </head>
 <body>
+  <h1>INTERACTIVE AUDIO PLAYER</h1>
   <div class="player">
     <div class="player__audio-info">
       <div>
         Played
         <span class="player__time-elapsed">-</span> of
         <span class="player__time-total">-</span>
-        <button class="player__previous button button--small">Move back</button>
-        <button class="player__next button button--small">Move forth</button>
       </div>
       <div>
         Volume:
         <span class="player__volume-info">100</span>
-        <button class="player__volume-down button button--small">Volume down</button>
-        <button class="player__volume-up button button--small">Volume up</button>
       </div>
     </div>
-    <button class="player__play button button--large">Play</button>
-    <button class="player__stop button button--large">Stop</button>
+    <button class="player__play button button--large "><i id="play_pause_icon" class="fa fa-play fa-2x" aria-hidden="true"></i></button>
+
+
+    <button class="player__stop button button--large"><i class="fa fa-stop fa-2x" aria-hidden="true"></i></button>
+    <button class="player__volume-down button button--large"><i class="fa fa-volume-down fa-2x" aria-hidden="true"></i></button>
+    <button class="player__volume-up button button--large"><i class="fa fa-volume-up fa-2x" aria-hidden="true"></i></button>
+    <button class="player__previous button button--large"><i class="fa fa-backward fa-2x" aria-hidden="true"></i></button>
+    <button class="player__next button button--large"><i class="fa fa-forward fa-2x" aria-hidden="true"></i></button>
   </div>
   
   <div>
+    <h4>TRANSCRIPTS</h4>
+    
     <p id="p1" class="transcript">
       he was frustrated by the website
     </p>
