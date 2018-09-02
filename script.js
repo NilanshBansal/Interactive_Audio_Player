@@ -96,7 +96,9 @@ player.btnStop.addEventListener('click', function () {
   if (audio === null) {
     return;
   }
-
+  if (colorChangedIndex != null) {
+    player.transcript_elements[colorChangedIndex].style.color = "black";
+  }
   audio.stop();
   document.querySelector('.player__time-elapsed').textContent = formatMilliseconds(0);
   player.play_pause_icon.classList.remove('fa-pause');
@@ -156,7 +158,7 @@ player.btnNext.addEventListener('click', function () {
 
 Object.keys(player.transcript_elements).forEach(function (key) {
   player.transcript_elements[key].addEventListener('click', function () {
-    if (audio === null) {
+    if (audio === null || audio.playState === 0) {
       return;
     }
     let stringId = player.transcript_elements[key]['id'];
