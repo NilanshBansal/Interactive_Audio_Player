@@ -158,14 +158,18 @@ player.btnNext.addEventListener('click', function () {
 
 Object.keys(player.transcript_elements).forEach(function (key) {
   player.transcript_elements[key].addEventListener('click', function () {
-    if (audio === null || audio.playState === 0) {
+    if (audio === null ) {
       return;
     }
+    
     let stringId = player.transcript_elements[key]['id'];
     stringId = stringId.substr(1);
     let id = parseInt(stringId);
     audio.setPosition((transcript[id - 1]) * 1000);
     player.timeElapsed.textContent = formatMilliseconds(audio.position);
+    if(audio.playState === 0 || audio.paused === true){
+      player.btnPlay.click();
+    }
   });
 });
 
