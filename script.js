@@ -37,7 +37,7 @@ function afterJsonLoad() {
   let temp_array;
   transcript_json.results.forEach(function (sentence) {
     temp_array = sentence['alternatives'][0]['timestamps'][0].sort(function (a, b) { return a === b ? 0 : a < b ? -1 : 1 });
-    transcript.push(temp_array[0]);
+    transcript.push(temp_array[1]);
   });
 
 
